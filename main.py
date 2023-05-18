@@ -1,6 +1,6 @@
 import streamlit as st
-import numpy as np
-import folium
+# import numpy as np
+# import folium
 import streamlit_folium
 
 from sekop_log_parsing import *
@@ -9,7 +9,7 @@ st.title('Навигационный трек из лог файла')
 
 log_file = st.file_uploader(
     'Загрузить лог файл',
-    type=['csv', 'csv.gz', 'csv.tar.gz']
+    type=['csv', 'csv gz', 'csv tar gz']
 )
 
 if not log_file is None:
@@ -62,7 +62,7 @@ if not log_file is None:
     draw_dot_track_to_map(my_map, track_time, track2list)
 
     # Трек линиями
-    draw_polyline_trip_track(my_map, track2list)
+    # draw_polyline_trip_track(my_map, track2list)
 
     # Автомасштаб по границам баундингбокса
     my_map.fit_bounds(
@@ -81,4 +81,3 @@ if not log_file is None:
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     pass
-
