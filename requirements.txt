@@ -1,0 +1,8 @@
+folium
+streamlit
+uvicorn[standard]
+fastapi
+python-multipart
+numpy
+pandas
+streamlit-folium
