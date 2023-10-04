@@ -1,6 +1,4 @@
 import streamlit as st
-# import numpy as np
-# import folium
 import streamlit_folium
 
 from sekop_log_parsing import *
@@ -18,8 +16,6 @@ if not log_file is None:
         # Получение массива данных  NMEA из лога
         nmea_track = extract_nmea_from_log(log_file)
 
-
-
         # Преобразование  времени в datetime
         track_time = track_time_to_datetime(nmea_track[:, 0])
 
@@ -28,20 +24,6 @@ if not log_file is None:
 
         # Приведение к виду для загрузки в leaflet/foliant:
         track2list = track.tolist()
-
-        # Инициализация карты с центром в начальной точке трека
-        # my_map = folium.Map(
-        #     location=track2list[0],
-        #     zoom_start=12
-        # )
-
-        # Среднее арифметическая координата всех точек трека
-        # mean_track_dot = track.mean(axis=0).tolist()
-        # Центрирование карты в точке среднеарифметического значений трека
-        # my_map = folium.Map(
-        #     location=mean_track_dot,
-        #     zoom_start=12
-        # )
 
         # Параметры баундингбокса
         bottom_right = [
@@ -78,17 +60,13 @@ if not log_file is None:
         )
 
 
-    except KeyError as e:
+    except (KeyError, IndexError) as e:
         st.error(
             """
             ** Ошибка чтения файла. Попробуйте другой файл **
             """
         )
-    #
-    # # Генерируем HTML страницу
-    # file = 'map.html'
-    # file = my_map.save(file)
 
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
     pass
